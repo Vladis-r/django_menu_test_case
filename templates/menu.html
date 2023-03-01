@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% load static %}
+<ul class="menu">
+    {% for item in menu_items %}
+        <li>
+            <a href="{{ item.url }}">{{ item.name }}</a>
+            {% if item.menuitem_set.all %}
+                <ul class="submenu">
+                    {% for child in item.menuitem_set.all %}
+                        <li><a href="{{ child.url }}">{{ child.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
